@@ -1,13 +1,9 @@
 package org.example.models;
 
-import org.example.interfaces.IAnimal;
-import org.example.interfaces.IDonkeySpecies;
-import org.example.interfaces.IHorseSpecies;
-import org.example.interfaces.IMuleSpecies;
+import org.example.interfaces.IDonkey;
+import org.example.interfaces.IHorse;
 
-public class Mule implements IMuleSpecies {
-
-    private String name;
+public class Mule extends Animal implements IDonkey, IHorse {
 
     public Mule(){}
     public Mule(String name)
@@ -15,18 +11,14 @@ public class Mule implements IMuleSpecies {
         this.setName(name);
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
+    public Mule(String name, int age, float weight)
+    {
+        super(name, age, weight);
     }
 
     @Override
     public void makeSound() {
         System.out.println("Make Mule sound!");
     }
+
 }

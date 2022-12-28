@@ -1,31 +1,25 @@
 package org.example.models;
 
-import org.example.interfaces.ILigerSpecies;
-import org.example.interfaces.ILionSpecies;
-import org.example.interfaces.ITigerSpecies;
+import org.example.interfaces.*;
 
-public class Liger implements ILigerSpecies {
+public class Liger extends Animal implements ILion, ITiger, ICat {
 
     private String name;
 
     public Liger(){}
+
     public Liger(String name)
     {
-        this.setName(name);
+        setName(name);
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public Liger(String name, int age, float weight)
+    {
+        super(name, age, weight);
     }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public void makeSound() {
         System.out.println("Make Liger sound!");
     }
+    
 }

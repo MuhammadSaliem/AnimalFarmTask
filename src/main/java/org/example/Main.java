@@ -1,114 +1,110 @@
 package org.example;
 
+import org.example.farm.AnimalArray;
+import org.example.farm.AnimalFarm;
+import org.example.farm.DonkeyArray;
+import org.example.files.FarmFile;
 import org.example.interfaces.IAnimal;
-import org.example.interfaces.IDonkeySpecies;
-
-import org.example.interfaces.ILionSpecies;
+import org.example.interfaces.ILion;
 import org.example.models.*;
 
-import java.util.ArrayList;
-import java.util.zip.ZipError;
+import java.lang.reflect.Array;
+import java.text.MessageFormat;
+
 
 public class Main {
     public static void main(String[] args) throws InstantiationException, IllegalAccessException {
-//        Donkey donkey = new Donkey("donkey1");
-//
-//        Lion lion = new Lion("lion1");
-//
-//        Lion liger = new Lion("liger1");
-//
-//        if(lion instanceof ILionSpecies)
-//            System.out.println(true);
-//
-//        if(liger instanceof IAnimal)
-//            System.out.println(true);
-
-//        IAnimal liger = new Lion("liger1");
-//        IAnimal mule = new Mule("mule1");
-//
-//        System.out.println(mule.getClass().getInterfaces()[1].getSimpleName());
-//        mule.makeSound();
-
-        IAnimal[] arr = new IAnimal[3];
-        arr[0] = new Lion("lion1");
-        arr[1] = new Mule("mule1");
-        arr[2] = new Lion("liger1");
-
-        AnimalArray<Lion> animalArray = new AnimalArray<Lion>(Lion.class, 2);
-
-        Lion lion = new Lion("lion1");
-        System.out.println(animalArray.isLegalAddition(lion));
-        animalArray.insert(lion);
-
-
-        Lion lion2 = new Lion("lion2");
-        System.out.println(animalArray.isLegalAddition(lion2));
-        animalArray.insert(lion2);
-
-        Lion lion3 = new Lion("lion3");
-        System.out.println(animalArray.isLegalAddition(lion3));
-        animalArray.insert(lion3);
-
-        Liger liger = new Liger("liger1");
-        System.out.println(animalArray.isLegalAddition(liger));
-        //animalArray.isLegalAddition(Lion.class, lion);
-
-//        Horse horse = new Horse("horse1");
-//        System.out.println(animalArray.isLegalAddition(horse));
-//        animalArray.insert(horse);
-
-        animalArray.print();
-
-
-        AnimalArray<Donkey> arr2 = new AnimalArray<Donkey>(Donkey.class, 10);
-
-        Donkey donkey = new Donkey("donkey1");
-        arr2.insert(donkey);
-
-        Mule mule = new Mule("mule1");
-        arr2.insert(mule);
-
-        Zebra zebra = new Zebra("zebra1");
-        arr2.insert(zebra);
-
-        arr2.print();
-
-        AnimalArray<Horse> arr3 = new AnimalArray<Horse>(Horse.class, 10);
-
-        Horse horse = new Horse("horse3");
-        arr3.insert(horse);
-
-        Mule mule2 = new Mule("mule3");
-        arr3.insert(mule2);
-
-
-        arr3.Delete(0);
-        arr3.print();
 
 
 //
-//        Liger liger = new Liger("liger1");
-//        animalArray.isLegalAddition(Lion.class, lion);
+//        AnimalFarm farm = new AnimalFarm();
+//        Lion lion1 = (Lion) farm.lionList.find("lion1");
+//        Tiger tiger1 = (Tiger)  farm.tigerList.find("tiger1");
 //
-//        //animalArray.add(new Tiger("tiger1"));
+//        farm.display();
 //
-//        ILionSpecies x1 = new Lion("lion1");
-//        ILionSpecies x2 = new Liger("liger2");
+//        var arr = lion1.mate(tiger1);
+//        System.out.println(String.format("%s - %d", arr.toString(), arr.length));
 //
-//        System.out.println(x1.getClass().getSimpleName());
-//        System.out.println(x2.getClass().getSimpleName());
+//        farm.display();
 //
-//        IAnimal[] arr2 = new ILionSpecies[2];
-//        arr2[0] = x1;
-//        arr2[1] = x2;
+//        Liger liger0 =(Liger) farm.lionList.find("Liger0");
+//        farm.tigerList.moveTo(liger0);
 //
-//        System.out.println(arr2[0].getClass().getSimpleName());
-//        System.out.println(arr2[1].getClass().getSimpleName());
+//        farm.display();
+//        System.out.println(MessageFormat.format("{0}", liger0.getName()));
+//
+//        Horse horse = (Horse)farm.horseList.find(0);
+//        Donkey donkey = ((Donkey)farm.donkeyList.find(0));
+//        horse.mate(donkey);
+//
+//        new FarmFile(farm).createSummaryFile();
+//
+//        IAnimal lion = new Lion();
+//
+//
+//        foo(lion);
+//
+//        System.out.println(liger0.mating(new Lion(), new Lion()));
+//        System.out.println(liger0.mating(new Tiger(), new Tiger()));
+//        System.out.println(liger0.mating(new Zebra(), new Zebra()));
+//        System.out.println(liger0.mating(new Donkey(), new Donkey()));
+//        System.out.println(liger0.mating(new Horse(), new Horse()));
 
 
+//        AnimalFarm farm = new AnimalFarm();
+//        new FarmFile(farm).createSummaryFile();
+//        farm.lionList.add(new Lion("Simba", 13, 67));
+//
+//        farm.tigerList.delete("tiger01");
+//
+//        // Encapsulation
+//        farm.tigerList.add(new Liger("Liger11"));
+//        farm.tigerList.add(new Liger("Liger11"));
 
+//        new FarmFile(farm).createSummaryFile();
+//        //System.out.println(farm.tigerList.find("tiger01").getName());
+//
+//        Lion simba = (Lion)farm.lionList.find("Simba");
+//        Lion[] arr = simba.mate(new Lion("Lena"));
+//        System.out.println(arr + " " + arr.length);
+//
+//        Liger ligerToMove = (Liger)farm.lionList.find("liger5");
+//        farm.tigerList.moveTo(ligerToMove);
+//
+//        new FarmFile(farm).createSummaryFile();
 
+        Lion simba = new Lion("Simba");
+        AnimalFarm farm = new AnimalFarm();
+        farm.lionList.moveTo(simba);
+        System.out.println(farm.lionList.find("Simba").getName());
 
+        var arr = simba.mate(new Tiger());
+        System.out.println(arr+ " " + arr.length);
+        new FarmFile(farm).createSummaryFile();
+    }
 
+    public static void foo(Object obj)
+    {
+        System.out.println("foo");
+        if(obj.getClass() == Lion.class)
+            System.out.println("Lion");
+        else if (obj.getClass() == Tiger.class) {
+            System.out.println("Tiger");
+        }
+        else
+            System.out.println("Unknown");
+    }
+
+    public static void foo2(Object obj)
+    {
+        System.out.println("foo2");
+        if(obj.getClass().equals(Lion.class))
+            System.out.println("Lion");
+        else if (obj.getClass().equals(Tiger.class)) {
+            System.out.println("Tiger");
+        }
+        else
+            System.out.println("Unknown");
     }
 }
