@@ -1,4 +1,4 @@
 package org.example.interfaces;
 
-public interface IHorse extends IAnimal{
+public interface IHorse extends IEquus{
 }

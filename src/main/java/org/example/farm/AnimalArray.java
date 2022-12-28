@@ -131,5 +131,15 @@ public abstract class AnimalArray {
     public int getLength() {
         return count;
     }
+    public int getAnimalCount(Class<?> type)
+    {
+        int count = 0;
+        for(int i = 0; i < this.getLength(); i++)
+        {
+            if(arr[i].getClass() == type)
+                count++;
+        }
+        return count;
+    }
 
 }

@@ -1,8 +1,9 @@
 package org.example.models;
 
 import org.example.farm.DonkeyArray;
+import org.example.farm.HorseArray;
+import org.example.interfaces.*;
 import org.example.interfaces.IDonkey;
-import org.example.interfaces.IZebra;
 
 import java.util.Random;
 
@@ -25,29 +26,14 @@ public class Donkey extends Animal implements IDonkey, IZebra {
         System.out.println("Make Donkey sound!");
     }
 
-    public Donkey[] mate(Donkey animal) {
-        Donkey[] lst = new Donkey[new Random().nextInt(1, 10)];
+    public IDonkey[] mate(IEquus animal) throws InstantiationException, IllegalAccessException {
 
-        for(int i = 0; i < lst.length; i ++)
-        {
-            lst[i] = new Donkey(String.format("Donkey%d",i), new Random().nextInt(15), new Random().nextFloat(10, 100));
-        }
+        IDonkey[] arr = (IDonkey[]) mating(this.getClass().newInstance(), animal);
+
         if(this.getArray() != null)
-            ((DonkeyArray)this.getArray()).add(lst);
+            ((DonkeyArray)this.getArray()).add(arr);
 
-        return lst;
-    }
-
-    public Mule[] mate(Horse animal) {
-        Mule[] lst = new Mule[new Random().nextInt(1, 10)];
-
-        for(int i = 0; i < lst.length; i ++)
-        {
-            lst[i] = new Mule(String.format("Mule%d",i), new Random().nextInt(15), new Random().nextFloat(10, 100));
-        }
-        if(this.getArray() != null)
-            ((DonkeyArray)this.getArray()).add(lst);
-        return lst;
+        return arr;
     }
 
 }

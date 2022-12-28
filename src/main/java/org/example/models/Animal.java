@@ -1,13 +1,8 @@
 package org.example.models;
-
 import org.example.factory.AnimalFactory;
 import org.example.farm.AnimalArray;
-import org.example.farm.DonkeyArray;
-import org.example.farm.HorseArray;
-import org.example.farm.LionArray;
 import org.example.interfaces.IAnimal;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 
 public abstract class Animal implements IAnimal {
@@ -15,6 +10,7 @@ public abstract class Animal implements IAnimal {
     private String name;
     private int age;
     private float weight;
+
     private AnimalArray array;
 
     public Animal(){}
@@ -85,7 +81,6 @@ public abstract class Animal implements IAnimal {
 
         IAnimal[] arr = AnimalFactory.getAnimalArray(childAnimal, new Random().nextInt(1, 10));
 
-
         for(int i = 0; i < arr.length; i ++)
         {
             IAnimal animal = childAnimal.getClass().newInstance();
@@ -122,6 +117,7 @@ public abstract class Animal implements IAnimal {
                     || (cls1 == Horse.class && cls2 == Donkey.class ))
                 return _mate(new Mule());
         }
-        return null;
+        IAnimal[] arr = AnimalFactory.getAnimalArray(firstAnimal, 0);
+        return arr;
     }
 }

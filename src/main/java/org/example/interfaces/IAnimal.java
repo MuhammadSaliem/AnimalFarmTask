@@ -17,4 +17,6 @@ public interface IAnimal {
     void moveTo(AnimalArray animalArray);
     //public IAnimal[] mating(IAnimal firstAnimal, IAnimal secondAnimal) throws InstantiationException, IllegalAccessException;
 
+
+
 }

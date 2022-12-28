@@ -1,6 +1,10 @@
 package org.example.models;
 
+import org.example.farm.LionArray;
 import org.example.farm.ZebraArray;
+import org.example.interfaces.ICat;
+import org.example.interfaces.IEquus;
+import org.example.interfaces.ILion;
 import org.example.interfaces.IZebra;
 
 import java.util.Random;
@@ -22,16 +26,14 @@ public class Zebra extends Animal implements IZebra {
         System.out.println("Make Zebra sound!");
     }
 
-    public Zebra[] mate(Zebra animal) {
-        Zebra[] lst = new Zebra[new Random().nextInt(1, 10)];
+    public IZebra[] mate(IZebra animal) throws InstantiationException, IllegalAccessException {
 
-        for(int i = 0; i < lst.length; i ++)
-        {
-            lst[i] = new Zebra(String.format("Zebra%d",i), new Random().nextInt(15), new Random().nextFloat(10, 100));
-        }
+        IZebra[] arr = (IZebra[]) mating(this.getClass().newInstance(), animal);
+
         if(this.getArray() != null)
-            ((ZebraArray)this.getArray()).add(lst);
-        return lst;
+            ((ZebraArray)this.getArray()).add(arr);
+
+        return arr;
     }
 
 }

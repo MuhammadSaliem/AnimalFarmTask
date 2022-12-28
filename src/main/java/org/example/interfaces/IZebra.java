@@ -1,4 +1,4 @@
 package org.example.interfaces;
 
-public interface IZebra extends IAnimal{
+public interface IZebra extends IEquus{
 }

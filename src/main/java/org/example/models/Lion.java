@@ -27,25 +27,13 @@ public class Lion extends Animal implements ILion {
     }
 
 
+
     public ILion[] mate(ICat animal) throws InstantiationException, IllegalAccessException {
 
-        ILion[] arr = null;
+        ILion[] arr = (ILion[]) mating(this.getClass().newInstance(), animal);
 
-        // if liger return empty array
-        // liger cannot give birth
-        if(animal.getClass() == Liger.class)
-            return new ILion[0];
-
-        // if lion or tiger mate and give birth
-        else if(animal.getClass() == Lion.class
-                || animal.getClass() == Tiger.class)
-        {
-            // send new Tiger() instead of this to prevent override the parent properties
-            arr = (ILion[]) mating(new Lion(), animal);
-
-            if(this.getArray() != null)
-                ((LionArray)this.getArray()).add(arr);
-        }
+        if(this.getArray() != null)
+            ((LionArray)this.getArray()).add(arr);
 
         return arr;
     }

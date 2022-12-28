@@ -1,7 +1,8 @@
 package org.example.models;
 
+import org.example.farm.DonkeyArray;
 import org.example.farm.HorseArray;
-import org.example.interfaces.IAnimal;
+import org.example.interfaces.*;
 import org.example.interfaces.IHorse;
 
 import java.util.Random;
@@ -26,28 +27,14 @@ public class Horse extends Animal implements IHorse, IAnimal {
     }
 
 
-    public Horse[] mate(Horse animal) {
-        Horse[] lst = new Horse[new Random().nextInt(1, 10)];
+    public IHorse[] mate(IEquus animal) throws InstantiationException, IllegalAccessException {
 
-        for(int i = 0; i < lst.length; i ++)
-        {
-            lst[i] = new Horse(String.format("Horse%d",i), new Random().nextInt(15), new Random().nextFloat(10, 100));
-        }
+        IHorse[] arr = (IHorse[]) mating(this.getClass().newInstance(), animal);
+
         if(this.getArray() != null)
-            ((HorseArray)this.getArray()).add(lst);
-        return lst;
-    }
+            ((HorseArray)this.getArray()).add(arr);
 
-    public Mule[] mate(Donkey animal) {
-        Mule[] lst = new Mule[new Random().nextInt(1, 10)];
-
-        for(int i = 0; i < lst.length; i ++)
-        {
-            lst[i] = new Mule(String.format("Mule%d",i), new Random().nextInt(15), new Random().nextFloat(10, 100));
-        }
-        if(this.getArray() != null)
-            ((HorseArray)this.getArray()).add(lst);
-        return lst;
+        return arr;
     }
 
 }
